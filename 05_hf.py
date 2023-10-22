@@ -15,19 +15,32 @@ load_dotenv()
 # print(hub_chain.run("What is the average age of the respondents using a mobile device?"))
 
 
-# second example below:
-hub_llm = HuggingFaceHub(
-    repo_id='gpt2',
-    model_kwargs={'temperature': 0.7, 'max_length': 100}
-)
+hub_llm = HuggingFaceHub(repo_id='gpt2', model_kwargs={'temperature': 0.7, 'max_length': 100})
 
 prompt = PromptTemplate(
-    input_variables=["profession"],
-    template="You had one job 😡! You're the {profession} and you didn't have to be sarcastic"
+    input_variables=['profession'],
+    template="You are amazing! You're the {profession} and we love you because"
 )
 
 hub_chain = LLMChain(prompt=prompt, llm=hub_llm, verbose=True)
 print(hub_chain.run("customer service agent"))
-print(hub_chain.run("politician"))
-print(hub_chain.run("Fintech CEO"))
-print(hub_chain.run("insurance agent"))
+print(hub_chain.run("dentist"))
+print(hub_chain.run("Driver"))
+print(hub_chain.run("programmer"))
+####
+# # second example below:
+# hub_llm = HuggingFaceHub(
+#     repo_id='gpt2',
+#     model_kwargs={'temperature': 0.7, 'max_length': 100}
+# )
+
+# prompt = PromptTemplate(
+#     input_variables=["profession"],
+#     template="You had one job 😡! You're the {profession} and you didn't have to be sarcastic"
+# )
+
+# hub_chain = LLMChain(prompt=prompt, llm=hub_llm, verbose=True)
+# print(hub_chain.run("customer service agent"))
+# print(hub_chain.run("politician"))
+# print(hub_chain.run("Fintech CEO"))
+# print(hub_chain.run("insurance agent"))
